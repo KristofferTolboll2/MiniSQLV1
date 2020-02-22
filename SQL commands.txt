@@ -1,0 +1,58 @@
+SELECT pg_terminate_backend(pid) FROM pg_stat_activity WHERE datname='school';
+
+DROP DATABASE IF EXISTS school;
+CREATE DATABASE school;
+
+\c school
+
+DROP TABLE IF EXISTS students;
+create table students (
+	studentID SERIAL PRIMARY KEY,
+	firstname text,
+	lastname text
+	);
+
+DROP TABLE IF EXISTS teachers;
+CREATE TABLE teachers (
+	teacherID SERIAL PRIMARY KEY,
+	firstname text,
+	lastname text
+	);	
+
+DROP TABLE IF EXISTS courseslist;
+CREATE  TABLE courseslist (
+	courseID SERIAL PRIMARY KEY,
+	title text
+	);
+
+DROP TABLE IF EXISTS teacherteam;
+CREATE TABLE teacherteam (
+	teacherteamID int,
+	teacherID INT REFERENCES teachers(teacherID),
+	PRIMARY KEY(teacherteamID)
+	);
+
+DROP TABLE IF EXISTS grades;
+CREATE TABLE grades (
+	studentID INT REFERENCES students(studentID),
+	courseID INT REFERENCES courseslist(courseID),
+	grade INT NOT NULL,
+	PRIMARY KEY(studentID,courseID)
+	);
+
+DROP TABLE IF EXISTS class;
+CREATE TABLE class (
+	classID INT UNIQUE NOT NULL,
+	courseID INT REFERENCES courseslist(courseID),
+	teacherteamID INT REFERENCES teacherteam(teacherteamID),
+	coursetype text CHECK(coursetype='Attendance' OR coursetype='Online'),
+	PRIMARY KEY(classID,courseID)
+	);
+
+
+DROP TABLE IF EXISTS classmembers;
+CREATE TABLE classmembers (
+	classID INT REFERENCES class(classID),
+	studentID INT REFERENCES students(studentID),
+	PRIMARY KEY(classID,studentID)
+	); 
