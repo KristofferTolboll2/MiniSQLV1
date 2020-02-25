@@ -7,14 +7,14 @@ $func$
 BEGIN
    	IF (
         /*
-		(SELECT amount FROM 
-		(SELECT COUNT(teacherid) AS amount
+	(SELECT amount FROM 
+	(SELECT COUNT(teacherid) AS amount
         FROM classes 
         JOIN teacher_teacherteam 
         ON classes.teacherteamid = teacher_teacherteam.teacherteamid
         WHERE teacher_teacherteam.teacherteamid = NEW.teacherteamid
-		*/
-		(SELECT COUNT(teacherid) AS amount
+	*/
+	(SELECT COUNT(teacherid) AS amount
         FROM teacher_teacherteam 
         WHERE teacher_teacherteam.teacherteamid = NEW.teacherteamid)
 	    < 2 )
