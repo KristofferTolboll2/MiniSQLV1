@@ -10,7 +10,7 @@
 	* function - addClass
 	* function - addTeacherToTeacherteam
 
-- [ ] **Trigger** - max 12 weeks class (**ALEX**)
+- [x] **Trigger** - max 12 weeks class (**ALEX**)
 - [ ] **Trigger** - minimum 2 instructors per course  (**JONAS**)
 - [ ] **Trigger** - student can only join 1 course, unless online then 3 (**ALEX**)
 - [x] **function/SO** - Names of graduates, who completed a specific course (**ALEX**)
