@@ -1,0 +1,13 @@
+CREATE TRIGGER weeks12 BEFORE INSERT OR UPDATE ON classes
+	FOR EACH ROW EXECUTE PROCEDURE max12weeks();
+
+
+CREATE OR REPLACE FUNCTION max12weeks() RETURNS TRIGGER AS $message$
+BEGIN
+IF (
+SELECT DATE_PART('day', new.ends::timestamp - new.starts::timestamp)) > 84 THEN
+	RAISE EXCEPTION 'Course cant be longer then 12 weeks';
+END IF;
+RETURN NEW;
+END; $message$
+LANGUAGE plpgsql;
