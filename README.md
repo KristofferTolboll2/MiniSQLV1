@@ -10,3 +10,7 @@
   - Names of graduates, who completed a specific course
   - Most popular courses, and current availability
   - An instructors occupation at a given time
+- Add constrains ensuring referential integrity (cascade)
+-  keeping transactions ACID and protected against blocking and deadlocks
+-  considering optimization of the queries (indexing)
+- protecting the use of the database with user account management, and control of privileges. (create domain users)
