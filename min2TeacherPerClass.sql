@@ -17,9 +17,9 @@ BEGIN
 	(SELECT COUNT(teacherid) AS amount
         FROM teacher_teacherteam 
         WHERE teacher_teacherteam.teacherteamid = NEW.teacherteamid)
-	    < 2 )
+	< 2 )
 	THEN
-      RAISE EXCEPTION 'Not sufficient teachers on the teacherteam';
+            RAISE EXCEPTION 'Not sufficient teachers on the teacherteam';
    	END IF;
    RETURN NEW;
 END
