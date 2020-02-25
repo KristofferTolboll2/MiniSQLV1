@@ -1,4 +1,4 @@
-INSERT INTO teachers (firstname, lastname) VALUES (Henning, Bodilsen);
+INSERT INTO teachers (firstname, lastname) VALUES (Jens, Johansen);
 
 INSERT INTO courses (title) VALUES (Maths);
 
