@@ -1,0 +1,16 @@
+CREATE OR REPLACE FUNCTION findGraduate (findcourseID INT)
+	RETURNS TABLE (studentID INT, courseid INT, grade INT, firstname text,lastname text) AS $$
+BEGIN
+	RETURN QUERY SELECT 
+		grades.studentid,
+		grades.courseid,
+		grades.grade,
+		students.firstname,
+		students.lastname
+	FROM 
+		grades 
+	JOIN students ON (grades.studentid = students.studentid)
+	WHERE 
+		grades.courseid = findcourseID;
+end; $$
+LANGUAGE 'plpgsql';
