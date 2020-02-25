@@ -1,0 +1,31 @@
+DROP TRIGGER IF EXISTS maxcourse ON classmembers;
+CREATE TRIGGER maxcourse BEFORE INSERT OR UPDATE ON classmembers
+	FOR EACH ROW EXECUTE PROCEDURE checkmaxcourse();
+
+CREATE OR REPLACE FUNCTION checkmaxcourse() RETURNS TRIGGER AS $message$
+BEGIN SET TRANSACTION ISOLATION LEVEL SERIALIZABLE;
+
+IF (SELECT coursetype FROM classes WHERE classes.classid = new.classid) = 'Attendance' THEN
+	IF (SELECT count(*) FROM classmembers JOIN classes ON(classmembers.classid = classes.classid)  WHERE classmembers.studentid = new.studentid AND 		coursetype = 'Attendance') > 0 THEN
+		RAISE EXCEPTION 'Already assigned a attandence course';
+	END IF;
+	IF (SELECT count(*) FROM classmembers JOIN classes ON(classmembers.classid = classes.classid)  WHERE classmembers.studentid = new.studentid AND 		coursetype = 'Online') > 0 THEN
+		RAISE EXCEPTION 'Already assigned a Online courses, cant join an Attendance course';
+	END IF;
+
+END IF;
+
+IF (SELECT coursetype FROM classes WHERE classes.classid = new.classid) = 'Online' THEN
+	IF (SELECT count(*) FROM classmembers JOIN classes ON(classmembers.classid = classes.classid)  WHERE classmembers.studentid = new.studentid AND 		coursetype = 'Attendance') > 0 THEN
+		RAISE EXCEPTION 'Already assigned a attandence course, cant join an Online course';
+	END IF;
+	IF (SELECT count(*) FROM classmembers JOIN classes ON(classmembers.classid = classes.classid)  WHERE classmembers.studentid = new.studentid AND 		coursetype = 'Online') > 2 THEN
+		RAISE EXCEPTION 'Already assigned a 3 Online courses, cant join an Online course';
+	END IF;
+
+END IF;
+
+RETURN NEW;
+
+END; $message$
+LANGUAGE plpgsql;
