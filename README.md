@@ -17,7 +17,7 @@
 - [ ] **function/SO/View** - Most popular courses, and current availability (**KRISTOFFER**)
 - [ ] **function/SO** - instructors occupation at a given time (**KRISTOFFER**)
 
-- [ ] **cascade** - Referential integrity (**FÆLLES**)
+- [x] **cascade** - Referential integrity (**FÆLLES**)
 - [ ] **ACID** - add reference constriaints isolation (**FÆLLES**)
 - [ ] **indexing** - considering optimization of queries (**CHRISTIAN**)
 - [ ] **Privileges** - create users with privileges mirroring business logic (**JONAS**)
