@@ -46,7 +46,7 @@ AS
     END
 GO
 
-exec db.CreateTeacher 'Henrik', 'Larsen';
+exec db.createTeacher 'Henrik', 'Larsen';
 
 
 CREATE PROC [db].[createCourses]
