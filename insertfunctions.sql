@@ -57,7 +57,7 @@ $$
 
 
 
-CREATE OR REPLACE PROCEDURE class(classID int, courseID int, starts timestamp, ends timestamp, ttID int, coursetype text) AS
+CREATE OR REPLACE PROCEDURE classes(classID int, courseID int, starts timestamp, ends timestamp, ttID int, coursetype text) AS
 $$
 BEGIN
     INSERT INTO classes (classID, courseID, starts, ends, teacherteamID, coursetype) VALUES (classID, courseID, starts, ends, ttID, coursetype);
