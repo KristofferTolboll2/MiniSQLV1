@@ -20,6 +20,10 @@ run = async (query) => {
   }
 }
 
+const amountOfClasses = 20
+const amountOfTeacherTeams = 21
+const amountOfCourses = 81;
+
 getNum = (max) => {
   return Math.floor(Math.random() * Math.floor(max));
 }
@@ -32,7 +36,7 @@ getDay = () => {
 createClasses = () => {    
     var classes = []
 
-    for(let i = 0; i < 20; i++){
+    for(let i = 0; i < amountOfClasses; i++){
         const _class = []
         _class.push(''+i)
         _class.push(''+getNum(82))
@@ -47,7 +51,7 @@ createClasses = () => {
 
 createTeacherTeams = () => {
     var teacherTeams = []
-    for(let i = 0; i < 20; i++){
+    for(let i = 0; i < amountOfTeacherTeams+1; i++){
         teacherTeams.push([i])
     }
     return teacherTeams
@@ -58,15 +62,15 @@ createTeacherTeacherTeam = async() => {
         let arr = []
         e.forEach(e => {
                 for(let i = 0; i < getNum(2) + 1; i++){
-                    arr.push([e.teacherid+'', getNum(20)+'' ])
+                    arr.push([e.teacherid+'', getNum(amountOfTeacherTeams+1)+'' ])
                 }
             })
     return arr
     })
 }
 
-createClassMembers = () => {
-        return run('select * from students').then(e => {
+createClassMembers = async () => {
+    return run('select * from students').then(e => {
         let arr = []
         e.forEach(e => {
               arr.push([e.studentid+'', getNum(20)+'' ])
@@ -75,14 +79,26 @@ createClassMembers = () => {
     })
 }
 
+createGrades = async () =>  {
+    const grades = ['12','10','7','4','2','00'];
+    return run('select studentid from students').then(e => {
+          let arr = []
+          e.forEach(e => {
+                arr.push([e.studentid+'', getNum(amountOfCourses)+'',grades[getNum(6) +''] ])
+          })
+        return arr
+    })
+}
+
 runQueries = async () => {
-    await run('delete from classes where classid < 101010')
-    await run('delete from students where studentid < 10000')
-    await run('delete from teachers where teacherid < 10101010')
-    await run('delete from courses where courseID < 101010')
-    await run('delete from teacherteams where teacherteamid < 101010')
-    await run('delete from teacher_teacherteam where teacherteamid < 101010')
-    await run('delete from classmembers where classid < 101010')
+    await run('delete from classes where true')
+    await run('delete from classmembers where true')
+    await run('delete from courses where true')
+    await run('delete from grades where true')
+    await run('delete from students where true')
+    await run('delete from teacher_teacherteam where true')
+    await run('delete from teachers where true')
+    await run('delete from teacherteams where true')
     await run(studentsQuery)
     await run(teachersQuery)
     await run(coursesQuery)
@@ -90,6 +106,10 @@ runQueries = async () => {
     await createTeacherTeacherTeam().then(e => run(format('INSERT INTO teacher_teacherteam (teacherid, teacherteamid) VALUES %L',e)))
     await run(format('INSERT INTO classes (classid, courseid, starts, ends, teacherteamid, coursetype) VALUES %L', createClasses()))
     await createClassMembers().then(e => run(format('INSERT INTO classmembers (studentid, classid) VALUES %L',e)))
+    await createGrades().then(e => run(format('INSERT INTO grades (studentid, courseid, grade) VALUES %L', e )))
 }
-runQueries()
-
+try{
+    runQueries()
+} catch(e){
+    console.warn(e)
+}
