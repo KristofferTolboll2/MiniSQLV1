@@ -6,8 +6,9 @@ END
 $$
     LANGUAGE 'plpgsql';
   
-CALL teacher('Henrik', 'Jakobsen');
-SELECT * from teachers;
+--CALL teacher('Henrik', 'Jakobsen');
+--SELECT * FROM teachers;
+
 
 
 CREATE OR REPLACE PROCEDURE courses(title text) AS
@@ -18,6 +19,8 @@ END
 $$
     LANGUAGE 'plpgsql';
 
+--CALL courses('Matematik')
+--SELECT * FROM courses
 
 
 CREATE OR REPLACE PROCEDURE teacherteam(ttID int) AS
@@ -28,6 +31,9 @@ END
 $$
     LANGUAGE 'plpgsql';
 
+--CALL teacherteam(1)
+--SELECT * FROM teacherteams
+
 
 CREATE OR REPLACE PROCEDURE student(fname text, lname text) AS
 $$
@@ -36,7 +42,9 @@ BEGIN
 END
 $$
     LANGUAGE 'plpgsql';
-    
+
+--CALL student('Inger', 'Støjer')
+--SELECT * FROM students
     
 
 CREATE OR REPLACE PROCEDURE grade(studentID int, courseID int, grade int) AS
@@ -46,6 +54,9 @@ BEGIN
 END
 $$
     LANGUAGE 'plpgsql';
+    
+--CALL grade(1, 1, 12)
+--SELECT * FROM grades
 
 
 CREATE OR REPLACE PROCEDURE ttt(tID int, ttID int) AS
@@ -56,6 +67,9 @@ END
 $$
     LANGUAGE 'plpgsql';
     
+--CALL ttt(1, 1)
+--SELECT * FROM teacher_teacherteam
+    
 
 
 CREATE OR REPLACE PROCEDURE createClass(classID int, courseID int, starts timestamp, ends timestamp, ttID int, coursetype text) AS
@@ -65,7 +79,9 @@ BEGIN
 END
 $$
     LANGUAGE 'plpgsql';
-    
+
+--CALL createClass(1, 1, now(), now(), 1, 'Online')
+--SELECT * FROM classes
     
     
 CREATE OR REPLACE PROCEDURE classmember(classID int, studentID int) AS
@@ -75,3 +91,6 @@ BEGIN
 END
 $$
     LANGUAGE 'plpgsql';
+    
+--CALL classmember(1, 1)
+--SELECT * FROM classmembers
