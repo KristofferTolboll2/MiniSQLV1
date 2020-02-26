@@ -1,6 +1,6 @@
 # MiniSQLV1 TASKS
 
-- [ ] **Functions** - create individual (**CHRISTIAN**)
+- [x] **Functions** - create individual (**CHRISTIAN**)
 	* function - addTeacher 
 	* function - addCourselist
 	* function - addTeacherteam
