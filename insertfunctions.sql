@@ -72,10 +72,10 @@ $$
     
 
 
-CREATE OR REPLACE PROCEDURE klasser(classID int, courseID int, starts timestamp, ends timestamp, ttID int, coursetype text) AS
+CREATE OR REPLACE PROCEDURE klasser(kID int, cID int, starter timestamp, slutter timestamp, ttID int, ct text) AS
 $$
 BEGIN
-    INSERT INTO classes (classID, courseID, starts, ends, teacherteamID, coursetype) VALUES (classID, courseID, starts, ends, ttID, coursetype);
+    INSERT INTO classes (classID, courseID, starts, ends, teacherteamID, coursetype) VALUES (kID, cID, starter, slutter, ttID, ct);
 END
 $$
     LANGUAGE 'plpgsql';
