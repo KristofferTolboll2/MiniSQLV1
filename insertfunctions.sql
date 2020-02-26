@@ -80,7 +80,7 @@ END
 $$
     LANGUAGE 'plpgsql';
 
---CALL createClass(1, 1, now(), now(), 1, 'Online')
+--CALL createClass(3, 1, '2020-02-02','2020-03-03', 1, 'Online'::text)
 --SELECT * FROM classes
     
     
