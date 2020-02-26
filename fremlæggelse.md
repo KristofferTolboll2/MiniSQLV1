@@ -9,13 +9,13 @@
 
 - Indexering på courseID i grades
 
--Triggers 
+- Triggers 
     - max 12 weeks class (ALEX)
     - Each teacher is assigned to a maximum of two teaching teams. (JONAS)
     - minimum 2 teachers per class (JONAS)
     - student can only join 1 class, unless online then 3 (ALEX)
 
- Functions/storeprocedures 
+ - Functions/storeprocedures 
     - Hurtig gennemgang af vores insertprocedures
         - Al logikken skulle ligge i databasen
         - Demonstrér en enkelt storeprocedure
