@@ -11,7 +11,7 @@
 	* function - addTeacherToTeacherteam
 
 - [x] **Trigger** - max 12 weeks class (**ALEX**)
-- [ ] **Trigger** - Each teacher is assigned to a maximum of two teaching teams. (**UNDECIDED**) 
+- [ ] **Trigger** - Each teacher is assigned to a maximum of two teaching teams. (**JONAS**) 
 - [x] **Trigger** - minimum 2 teachers per class  (**JONAS**)
 - [x] **Trigger** - student can only join 1 class, unless online then 3 (**ALEX**)
 - [x] **function/SO** - Names of graduates, who completed a specific class (**ALEX**)
