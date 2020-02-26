@@ -18,7 +18,11 @@ run = async query => {
   } finally {
     client.end();
   }
-}
+};
+
+const amountOfClasses = 20;
+const amountOfTeacherTeams = 10;
+const amountOfCourses = 81;
 
 getNum = max => {
   return Math.floor(Math.random() * Math.floor(max));
@@ -38,7 +42,7 @@ createClasses = () => {
     _class.push("" + getNum(82));
     _class.push("now()");
     _class.push(`2020-0${getNum(2) + 1}-${getDay()}`);
-    _class.push("" + getNum(20));
+    _class.push("" + getNum(amountOfTeacherTeams));
     _class.push(getNum(2) === 0 ? "Attendance" : "Online");
     classes.push(_class);
   }
@@ -47,7 +51,7 @@ createClasses = () => {
 
 createTeacherTeams = () => {
   var teacherTeams = [];
-  for (let i = 0; i < amountOfTeacherTeams + 1; i++) {
+  for (let i = 0; i < amountOfTeacherTeams; i++) {
     teacherTeams.push([i]);
   }
   return teacherTeams;
@@ -58,7 +62,7 @@ createTeacherTeacherTeam = async () => {
     let arr = [];
     e.forEach(e => {
       for (let i = 0; i < getNum(2) + 1; i++) {
-        arr.push([e.teacherid + "", getNum(amountOfTeacherTeams + 1) + ""]);
+        arr.push([e.teacherid + "", getNum(amountOfTeacherTeams) + ""]);
       }
     });
     return arr;
@@ -69,7 +73,7 @@ createClassMembers = async () => {
   return run("select * from students").then(e => {
     let arr = [];
     e.forEach(e => {
-      arr.push([e.studentid + "", getNum(20) + ""]);
+      arr.push([e.studentid + "", getNum(amountOfTeacherTeams) + ""]);
     });
     return arr;
   });
@@ -116,7 +120,7 @@ runQueries = async () => {
       )
     )
   );
-  await run(
+ await run(
     format(
       "INSERT INTO classes (classid, courseid, starts, ends, teacherteamid, coursetype) VALUES %L",
       createClasses()
