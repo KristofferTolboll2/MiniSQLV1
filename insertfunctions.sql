@@ -29,15 +29,6 @@ $$
     LANGUAGE 'plpgsql';
 
 
-CREATE OR REPLACE PROCEDURE classmember(classID int, studentID int) AS
-$$
-BEGIN
-    INSERT INTO classmembers (classID, studentID) VALUES (classID, studentID);
-END
-$$
-    LANGUAGE 'plpgsql';
-
-
 CREATE OR REPLACE PROCEDURE student(fname text, lname text) AS
 $$
 BEGIN
@@ -45,7 +36,8 @@ BEGIN
 END
 $$
     LANGUAGE 'plpgsql';
-
+    
+    
 
 CREATE OR REPLACE PROCEDURE grade(studentID int, courseID int, grade int) AS
 $$
@@ -56,6 +48,15 @@ $$
     LANGUAGE 'plpgsql';
 
 
+CREATE OR REPLACE PROCEDURE ttt(tID int, ttID int) AS
+$$
+BEGIN
+    INSERT INTO teacher_teacherteam (teacherID, teacherteamID) VALUES (tID, ttID);
+END
+$$
+    LANGUAGE 'plpgsql';
+    
+
 
 CREATE OR REPLACE PROCEDURE createClass(classID int, courseID int, starts timestamp, ends timestamp, ttID int, coursetype text) AS
 $$
@@ -64,13 +65,13 @@ BEGIN
 END
 $$
     LANGUAGE 'plpgsql';
-
-
-
-CREATE OR REPLACE PROCEDURE ttt(tID int, ttID int) AS
+    
+    
+    
+CREATE OR REPLACE PROCEDURE classmember(classID int, studentID int) AS
 $$
 BEGIN
-    INSERT INTO teacher_teacherteam (teacherID, teacherteamID) VALUES (tID, ttID);
+    INSERT INTO classmembers (classID, studentID) VALUES (classID, studentID);
 END
 $$
     LANGUAGE 'plpgsql';
