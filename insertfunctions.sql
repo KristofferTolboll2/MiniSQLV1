@@ -6,8 +6,9 @@ END
 $$
     LANGUAGE 'plpgsql';
   
-CALL teacher('Henrik', 'Jakobsen');
-SELECT * from teachers;
+--CALL teacher('Henrik', 'Jakobsen');
+--SELECT * FROM teachers;
+
 
 
 CREATE OR REPLACE PROCEDURE courses(title text) AS
@@ -18,6 +19,8 @@ END
 $$
     LANGUAGE 'plpgsql';
 
+--CALL courses('Matematik')
+--SELECT * FROM courses
 
 
 CREATE OR REPLACE PROCEDURE teacherteam(ttID int) AS
@@ -28,14 +31,8 @@ END
 $$
     LANGUAGE 'plpgsql';
 
-
-CREATE OR REPLACE PROCEDURE classmember(classID int, studentID int) AS
-$$
-BEGIN
-    INSERT INTO classmembers (classID, studentID) VALUES (classID, studentID);
-END
-$$
-    LANGUAGE 'plpgsql';
+--CALL teacherteam(1)
+--SELECT * FROM teacherteams
 
 
 CREATE OR REPLACE PROCEDURE student(fname text, lname text) AS
@@ -46,6 +43,9 @@ END
 $$
     LANGUAGE 'plpgsql';
 
+--CALL student('Inger', 'Støjer')
+--SELECT * FROM students
+    
 
 CREATE OR REPLACE PROCEDURE grade(studentID int, courseID int, grade int) AS
 $$
@@ -54,17 +54,9 @@ BEGIN
 END
 $$
     LANGUAGE 'plpgsql';
-
-
-
-CREATE OR REPLACE PROCEDURE createClass(classID int, courseID int, starts timestamp, ends timestamp, ttID int, coursetype text) AS
-$$
-BEGIN
-    INSERT INTO classes (classID, courseID, starts, ends, teacherteamID, coursetype) VALUES (classID, courseID, starts, ends, ttID, coursetype);
-END
-$$
-    LANGUAGE 'plpgsql';
-
+    
+--CALL grade(1, 1, 12)
+--SELECT * FROM grades
 
 
 CREATE OR REPLACE PROCEDURE ttt(tID int, ttID int) AS
@@ -74,3 +66,31 @@ BEGIN
 END
 $$
     LANGUAGE 'plpgsql';
+    
+--CALL ttt(1, 1)
+--SELECT * FROM teacher_teacherteam
+    
+
+
+CREATE OR REPLACE PROCEDURE klasser(kID int, cID int, starter timestamp, slutter timestamp, ttID int, ct text) AS
+$$
+BEGIN
+    INSERT INTO classes (classID, courseID, starts, ends, teacherteamID, coursetype) VALUES (kID, cID, starter, slutter, ttID, ct);
+END
+$$
+    LANGUAGE 'plpgsql';
+
+--CALL createClass(3, 1, '2020-02-02','2020-03-03', 1, 'Online'::text)
+--SELECT * FROM classes
+    
+    
+CREATE OR REPLACE PROCEDURE classmember(classID int, studentID int) AS
+$$
+BEGIN
+    INSERT INTO classmembers (classID, studentID) VALUES (classID, studentID);
+END
+$$
+    LANGUAGE 'plpgsql';
+    
+--CALL classmember(1, 1)
+--SELECT * FROM classmembers
