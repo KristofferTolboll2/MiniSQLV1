@@ -23,4 +23,4 @@
    **ACID** - add reference constriaints isolation (**FÆLLES**)
 
 - [ ] **indexing** - considering optimization of queries (**CHRISTIAN**)
-- [ ] **Privileges** - create users with privileges mirroring business logic (**JONAS**)
+- [x] **Privileges** - create users with privileges mirroring business logic (**JONAS**)
