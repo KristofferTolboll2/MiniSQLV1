@@ -1,4 +1,4 @@
-exports.teachersQuery =  `INSERT INTO teachers (firstname,lastname) VALUES(' Alberte','Laursen');
+exports.teachersQuery = `INSERT INTO teachers (firstname,lastname) VALUES(' Alberte','Laursen');
 INSERT INTO teachers (firstname,lastname) VALUES(' Magnus','Damgaard');
 INSERT INTO teachers (firstname,lastname) VALUES(' Asger','Hermansen');
 INSERT INTO teachers (firstname,lastname) VALUES(' Anker','Nygård');
@@ -47,4 +47,4 @@ INSERT INTO teachers (firstname,lastname) VALUES(' Leonora','Hjorth');
 INSERT INTO teachers (firstname,lastname) VALUES(' Liva','Christoffersen');
 INSERT INTO teachers (firstname,lastname) VALUES(' Magne','Petersen');
 INSERT INTO teachers (firstname,lastname) VALUES(' Carl','Nielsen');
-INSERT INTO teachers (firstname,lastname) VALUES(' Anna','Danielsen');`
+INSERT INTO teachers (firstname,lastname) VALUES(' Anna','Danielsen');`;

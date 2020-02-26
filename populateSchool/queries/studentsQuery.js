@@ -997,4 +997,4 @@ INSERT INTO students (firstname,lastname) VALUES(' Asta','Jeppesen');
 INSERT INTO students (firstname,lastname) VALUES(' Signe','Petersen');
 INSERT INTO students (firstname,lastname) VALUES(' Nora','Johansen');
 INSERT INTO students (firstname,lastname) VALUES(' Mathilde','Ågård');
-INSERT INTO students (firstname,lastname) VALUES(' Ellen','Johannsen');`
+INSERT INTO students (firstname,lastname) VALUES(' Ellen','Johannsen');`;
