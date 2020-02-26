@@ -8,24 +8,14 @@ function - addClass
 function - addTeacherToTeacherteam
 
 
-CREATE PROC [db].[createTeacher]
-(
-    @firstname text,
-    @lastname text
-)
-AS
-    BEGIN
-        if (EXIST(SELECT firstname FROM teachers WHERE firstname=@firstname AND lastname=@lastname))
-            return 1;
-        else
-            BEGIN
-                INSERT INTO db.teachers (firstname, lastname) 
-                VALUES (@firstname, @lastname);
-                return 0;
-            END
-    
-    END
-GO
+CREATE OR REPLACE PROCEDURE teacher(fname text, lname text) AS
+$$
+BEGIN
+    INSERT INTO teachers (firstname, lastname) VALUES (fname, lname);
+END
+$$
+    LANGUAGE 'plpgsql';
+  
 
 exec db.createTeacher 'Henrik', 'Larsen';
 
