@@ -39,7 +39,7 @@ createClasses = () => {
   for (let i = 0; i < amountOfClasses; i++) {
     const _class = [];
     _class.push("" + i);
-    _class.push("" + getNum(82));
+    _class.push("" + getNum(amountOfCourses));
     _class.push("now()");
     _class.push(`2020-0${getNum(2) + 1}-${getDay()}`);
     _class.push("" + getNum(amountOfTeacherTeams));
@@ -87,7 +87,7 @@ createGrades = async () => {
       arr.push([
         e.studentid + "",
         getNum(amountOfCourses) + "",
-        grades[getNum(6) + ""]
+        grades[getNum(grades.length) + ""]
       ]);
     });
     return arr;
