@@ -54,7 +54,7 @@ GO
 CREATE PROC [db].[createTeacherTeam]
 (
     @teacherteamID int,
-	@teacherID int REFERENCES teachers(teacherID),
+    @teacherID int REFERENCES teachers(teacherID),
 )
 AS
     BEGIN
@@ -75,7 +75,7 @@ GO
 CREATE PROC [db].[createClassmember]
 (
     @classID int REFERENCES class(classID),
-	@studentID int REFERENCES students(studentID),
+    @studentID int REFERENCES students(studentID),
 )
 AS
     BEGIN
@@ -116,8 +116,8 @@ GO
 CREATE PROC [db].[createGrade]
 (
     @studentID int REFERENCES students(studentID),
-	@courseID int REFERENCES courseslist(courseID),
-	@grade int NOT NULL,
+    @courseID int REFERENCES courseslist(courseID),
+    @grade int NOT NULL,
 )
 AS
     BEGIN
@@ -138,9 +138,9 @@ GO
 CREATE PROC [db].[createClass]
 (
     @classID INT UNIQUE NOT NULL,
-	@courseID INT REFERENCES courseslist(courseID),
-	@teacherteamID INT REFERENCES teacherteam(teacherteamID),
-	@coursetype text CHECK(coursetype='Attendance' OR coursetype='Online')
+    @courseID INT REFERENCES courseslist(courseID),
+    @teacherteamID INT REFERENCES teacherteam(teacherteamID),
+    @coursetype text CHECK(coursetype='Attendance' OR coursetype='Online')
 )
 AS
     BEGIN
@@ -159,8 +159,8 @@ GO
 
 --CREATE PROC [db].[createTeacherToTeacherteam]
 --(
---    teacherteamID int,
---	teacherID int REFERENCES teachers(teacherID),
+--    @teacherteamID int,
+--	@teacherID int REFERENCES teachers(teacherID),
 --)
 --AS
 --    BEGIN
