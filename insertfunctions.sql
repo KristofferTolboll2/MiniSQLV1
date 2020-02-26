@@ -1,15 +1,3 @@
-function - addTeacher
-function - addCourselist
-function - addTeacherteam
-function - addClassmember
-function - addStudent
-function - addGrade
-function - addClass
-function - addTeacherToTeacherteam
-
-
-
-
 CREATE OR REPLACE PROCEDURE teacher(fname text, lname text) AS
 $$
 BEGIN
