@@ -31,7 +31,7 @@ Skaber brugeren management med kodeord 1234
 
 **GRANT connect ON DATABASE school TO management;**
 
-**ALTER ROLE man**agement WITH LOGIN;**
+**ALTER ROLE management WITH LOGIN;**
 
 **GRANT SELECT, INSERT, UPDATE, DELETE ON ALL TABLES IN SCHEMA public TO management;**
 
