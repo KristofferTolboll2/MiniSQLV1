@@ -1,5 +1,5 @@
 DROP TRIGGER IF EXISTS isTeacherAvailable ON teacher_teacherteam;
-DROP FUNCTION IF EXISTS isTeacherAvailaibleTeacher_teacherteam; --trigger is dependent on function
+DROP FUNCTION IF EXISTS isTeacherAvailaibleTeacher_teacherteam;
 
 CREATE FUNCTION isTeacherAvailaibleTeacher_teacherteam()
   RETURNS trigger AS
@@ -26,7 +26,7 @@ CREATE TRIGGER isTeacherAvailable BEFORE INSERT ON teacher_teacherteam
 ----------------------------------------------------------------------------------------------
 
 DROP TRIGGER IF EXISTS isTeacherAvailable ON classes;
-DROP FUNCTION IF EXISTS isTeacherAvailaibleClasses; --trigger is dependent on function
+DROP FUNCTION IF EXISTS isTeacherAvailaibleClasses; 
 
 CREATE FUNCTION isTeacherAvailaibleClasses()
   RETURNS trigger AS
