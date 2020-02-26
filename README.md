@@ -19,6 +19,6 @@
 - [ ] **function/SO** - teachers occupation at a given time (**KRISTOFFER**)
 
 - [x] **cascade** - Referential integrity (**FÆLLES**)
-- [ ] **ACID** - add reference constriaints isolation (**FÆLLES**)
+-     **ACID** - add reference constriaints isolation (**FÆLLES**)
 - [ ] **indexing** - considering optimization of queries (**CHRISTIAN**)
 - [ ] **Privileges** - create users with privileges mirroring business logic (**JONAS**)
