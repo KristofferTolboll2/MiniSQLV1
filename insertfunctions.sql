@@ -23,7 +23,7 @@ $$
 CREATE OR REPLACE PROCEDURE teacherteam(ttID int) AS
 $$
 BEGIN
-    INSERT INTO teacherteam (teacherteamID) VALUES (ttid);
+    INSERT INTO teacherteams (teacherteamID) VALUES (ttid);
 END
 $$
     LANGUAGE 'plpgsql';
