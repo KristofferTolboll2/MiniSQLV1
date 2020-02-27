@@ -11,6 +11,10 @@ IF ( SELECT current_setting('transaction_isolation') != 'serializable') THEN
 	RAISE EXCEPTION 'This transaction needs to be run in serializable level';  
 END IF;
 
+IF (SELECT COUNT(*) FROM classmembers WHERE classid = new.classid) >= 100 THEN
+		RAISE EXCEPTION 'Class is full';
+	END IF;
+
 IF (SELECT coursetype FROM classes WHERE classes.classid = new.classid) = 'Attendance' THEN
 	IF (SELECT count(*) FROM classmembers JOIN classes ON(classmembers.classid = classes.classid)  WHERE classmembers.studentid = new.studentid AND 		coursetype = 'Attendance') > 0 THEN
 		RAISE EXCEPTION 'Already assigned a attandence course';
