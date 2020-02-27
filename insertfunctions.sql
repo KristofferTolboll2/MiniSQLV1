@@ -1,6 +1,9 @@
 CREATE OR REPLACE PROCEDURE teacher(fname text, lname text) AS
 $$
 BEGIN
+    IF ( SELECT current_setting('transaction_isolation') != 'serializable') THEN
+	    RAISE EXCEPTION 'This transaction needs to be run in serializable level';  
+    END IF;
     INSERT INTO teachers (firstname, lastname) VALUES (fname, lname);
 END
 $$
